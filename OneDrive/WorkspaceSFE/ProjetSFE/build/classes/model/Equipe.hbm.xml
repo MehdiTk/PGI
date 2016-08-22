@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 juil. 2016 00:52:55 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Equipe" table="EQUIPE">
+        <id name="equipeId" type="string">
+            <column name="EQUIPE_ID" length="254" />
+            <generator class="assigned" />
+        </id>
+        <property name="equipeNom" type="string">
+            <column name="EQUIPE_NOM" length="254" />
+        </property>
+        <property name="equipeDatecrea" type="date">
+            <column name="EQUIPE_DATECREA" length="7" />
+        </property>
+        <property name="equipeEmpcrea" type="string">
+            <column name="EQUIPE_EMPCREA" length="254" />
+        </property>
+        <set name="contrats" table="CONTRAT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EQUIPE_ID" length="254" not-null="true" />
+            </key>
+            <one-to-many class="model.Contrat" />
+        </set>
+        <set name="employees" table="EQUIPE_EMP" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="EQUIPE_ID" length="254" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.Employee">
+                <column name="EMP_ID" length="254" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

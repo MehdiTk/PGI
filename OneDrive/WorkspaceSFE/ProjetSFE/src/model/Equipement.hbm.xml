@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 juil. 2016 00:52:55 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Equipement" table="EQUIPEMENT">
+        <id name="equipementId" type="string">
+            <column name="EQUIPEMENT_ID" length="254" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="entreprise" class="model.Entreprise" fetch="select">
+            <column name="ENTREPRISE_ID" length="254" not-null="true" />
+        </many-to-one>
+        <property name="equipementNom" type="string">
+            <column name="EQUIPEMENT_NOM" length="254" />
+        </property>
+        <property name="equipementIp" type="string">
+            <column name="EQUIPEMENT_IP" length="254" />
+        </property>
+        <property name="equipementUser" type="string">
+            <column name="EQUIPEMENT_USER" length="254" />
+        </property>
+        <property name="equipementPass" type="string">
+            <column name="EQUIPEMENT_PASS" length="254" />
+        </property>
+        <property name="equipementDatecrea" type="date">
+            <column name="EQUIPEMENT_DATECREA" length="7" />
+        </property>
+        <property name="equipementEmpcrea" type="string">
+            <column name="EQUIPEMENT_EMPCREA" length="254" />
+        </property>
+        <set name="alertes" table="ALERTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EQUIPEMENT_ID" length="254" not-null="true" />
+            </key>
+            <one-to-many class="model.Alerte" />
+        </set>
+        <set name="etatserveurs" table="ETATSERVEUR" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EQUIPEMENT_ID" length="254" not-null="true" />
+            </key>
+            <one-to-many class="model.Etatserveur" />
+        </set>
+    </class>
+</hibernate-mapping>

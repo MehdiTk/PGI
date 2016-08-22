@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 juil. 2016 00:52:55 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Entreprise" table="ENTREPRISE">
+        <id name="entrepriseId" type="string">
+            <column name="ENTREPRISE_ID" length="254" />
+            <generator class="assigned" />
+        </id>
+        <property name="entrepriseNom" type="string">
+            <column name="ENTREPRISE_NOM" length="254" />
+        </property>
+        <property name="entrepriseStatusj" type="string">
+            <column name="ENTREPRISE_STATUSJ" length="254" />
+        </property>
+        <property name="entrepriseNomcontact" type="string">
+            <column name="ENTREPRISE_NOMCONTACT" length="254" />
+        </property>
+        <property name="entrepriseNum" type="string">
+            <column name="ENTREPRISE_NUM" length="254" />
+        </property>
+        <property name="entrepriseAdr" type="string">
+            <column name="ENTREPRISE_ADR" length="254" />
+        </property>
+        <property name="entrepriseDatecrea" type="date">
+            <column name="ENTREPRISE_DATECREA" length="7" />
+        </property>
+        <property name="entrepriseEmpcrea" type="string">
+            <column name="ENTREPRISE_EMPCREA" length="254" />
+        </property>
+        
+         <property name="entrepriseRegcom" type="string">
+            <column name="ENTREPRISE_REGCOM" length="254" />
+        </property>
+             <property name="entrepriseCapital" type="big_decimal">
+            <column name="ENTREPRISE_CAPITAL"  precision="22" scale="0" />
+        </property>
+        <set name="contrats" table="CONTRAT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ENTREPRISE_ID" length="254" not-null="true" />
+            </key>
+            <one-to-many class="model.Contrat" />
+        </set>
+        <set name="equipements" table="EQUIPEMENT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ENTREPRISE_ID" length="254" not-null="true" />
+            </key>
+            <one-to-many class="model.Equipement" />
+        </set>
+    </class>
+</hibernate-mapping>

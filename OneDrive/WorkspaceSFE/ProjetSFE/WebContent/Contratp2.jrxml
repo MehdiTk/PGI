@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-08-19T00:33:45 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Contrat" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d31fa24c-3b1b-40db-9019-f078c0cd064f">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ORACLEJDBCJASPER"/>
+	<queryString>
+		<![CDATA[SELECT c.*,e.* FROM CONTRAT c, ENTREPRISE e where C.ENTREPRISE_ID = E.ENTREPRISE_ID]]>
+	</queryString>
+	<field name="CONTRAT_ID" class="java.lang.String"/>
+	<field name="EQUIPE_ID" class="java.lang.String"/>
+	<field name="ENTREPRISE_ID" class="java.lang.String"/>
+	<field name="CONTRAT_PATH" class="java.lang.String"/>
+	<field name="CONTRAT_DATECREA" class="java.sql.Timestamp"/>
+	<field name="CONTRAT_EMPCREA" class="java.lang.String"/>
+	<field name="CONTRAT_DDEBUT" class="java.sql.Timestamp"/>
+	<field name="CONTRAT_DUREE" class="java.math.BigDecimal"/>
+	<field name="CONTRAT_MONTANT" class="java.math.BigDecimal"/>
+	<field name="CONTRAT_PENALITE" class="java.math.BigDecimal"/>
+	<field name="CONTRAT_LOIDES" class="java.lang.String"/>
+	<field name="COLUMN_12" class="java.lang.String"/>
+	<field name="ENTREPRISE_NOM" class="java.lang.String"/>
+	<field name="ENTREPRISE_STATUSJ" class="java.lang.String"/>
+	<field name="ENTREPRISE_NOMCONTACT" class="java.lang.String"/>
+	<field name="ENTREPRISE_NUM" class="java.lang.String"/>
+	<field name="ENTREPRISE_ADR" class="java.lang.String"/>
+	<field name="ENTREPRISE_DATECREA" class="java.sql.Timestamp"/>
+	<field name="ENTREPRISE_EMPCREA" class="java.lang.String"/>
+	<field name="ENTREPRISE_REGCOM" class="java.lang.String"/>
+	<field name="ENTREPRISE_CAPITAL" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="20" width="510" height="760" uuid="24f8cf79-551f-4f32-a828-6fc6efb1604f"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Microsoft JhengHei UI Light" size="18"/>
+				</textElement>
+				<text><![CDATA[Entre les soussignés : 
+La société _________________, [forme juridique] au capital de _________________ USD, dont le siège social est _______________ _____, enregistrée au Registre du Commerce et des Sociétés de ____________sous le numéro ______________, Représentée par M. __________________________ [nom et qualité],
+Ci-après désignée « Le Client », d'une part, et
+La société _________________, Société [forme juridique] au capital de _________________ USD, dont le siège social est ________________ ____, enregistrée au Registre du Commerce et des Sociétés de _______________ sous le numéro ____________, représentée par M. ________________________ [nom et qualité],
+Ci-après dénommée « le Prestataire de services » ou « le Prestataire »,
+D’autre part, il a été convenu ce qui suit :
+Préambule
+[Rappeler ici, en quelques lignes, les raisons qui motivent l'accord intervenu. Ceci peut être utile ultérieurement pour l'interprétation du contrat.]
+Ceci exposé,
+Il a été convenu ce qui suit :
+Article premier - Objet
+Le présent contrat est un contrat de prestation de conseil ayant pour objet la mission définie au cahier des charges annexé au présent contrat et en faisant partie intégrante.
+En contrepartie de la réalisation des prestations définies à l'Article premier ci-dessus, le client versera au prestataire la somme forfaitaire de _______________ euros, ventilée de la manière suivante:
+20% à la signature des présentes ;
+30% au (n) jour suivant la signature des présentes ;
+50% constituant le solde, à la réception de la tâche.
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

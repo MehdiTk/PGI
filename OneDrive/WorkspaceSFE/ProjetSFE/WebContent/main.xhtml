@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head>
+
+
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet"
+		href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700" />
+	<link rel="stylesheet" href="assets/js/plugins/slick/slick.min.css" />
+	<link rel="stylesheet"
+		href="assets/js/plugins/slick/slick-theme.min.css" />
+	<link rel="stylesheet" href="assets/css/bootstrap.min-1.4.css" />
+	<link rel="stylesheet" id="css-main"
+		href="assets/css/oneui.min-2.1.css" />
+	<link href='https://fonts.googleapis.com/css?family=Lato:300'
+		rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="css/table.css?v=0.0.2" />
+	<style>
+	
+	.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #29d;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+	</style>
+</h:head>
+
+<h:body>
+
+
+	<div id="page-container"
+		class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+
+		<ui:include src="/TPL/nav.xhtml" />
+
+		<ui:include src="/TPL/header.xhtml" />
+
+		<main id="main-container" style="min-height: 868px;">
+		<div class="content bg-white border-b">
+			<div class="row items-push text-uppercase">
+				<div class="col-xs-6 col-sm-3">
+					<div class="font-w700 text-gray-darker animated fadeIn">Utilisation
+						du CPU</div>
+					<div class="text-muted animated fadeIn">
+						<small><i class="si si-calendar"></i> En temps réel</small>
+					</div>
+					<a class="h2 font-w300 text-primary animated flipInX"
+						href="base_comp_charts.php"><h:form id="formid">
+							<h:outputText id="txt_count" value="#{serverBean.datalastone()}" /> %
+									<p:poll interval="1" update="txt_count" />
+						</h:form></a>
+				</div>
+				<div class="col-xs-6 col-sm-3">
+					<div class="font-w700 text-gray-darker animated fadeIn">Utilisation
+						max du CPU</div>
+					<div class="text-muted animated fadeIn">
+						<small><i class="si si-calendar"></i> Aujourd'hui</small>
+					</div>
+					<a class="h2 font-w300 text-primary animated flipInX"
+						href="base_comp_charts.php">65 %</a>
+				</div>
+				<div class="col-xs-6 col-sm-3">
+					<div class="font-w700 text-gray-darker animated fadeIn">Utilisation
+						de la memoire</div>
+					<div class="text-muted animated fadeIn">
+						<small><i class="si si-calendar"></i> En temps réel</small>
+					</div>
+					<a class="h2 font-w300 text-primary animated flipInX"
+						href="base_comp_charts.php"><h:outputText id="txt_count"
+							value="#{serverBean.datalastone()} %" /></a>
+				</div>
+				<div class="col-xs-6 col-sm-3">
+					<div class="font-w700 text-gray-darker animated fadeIn">Utilisation
+						max de la memoire</div>
+					<div class="text-muted animated fadeIn">
+						<small><i class="si si-calendar"></i> Aujourd'hui</small>
+					</div>
+					<a class="h2 font-w300 text-primary animated flipInX"
+						href="base_comp_charts.php">47 %</a>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="block">
+						<div class="block-header">
+							<ul class="block-options">
+								<li>
+									<button type="button" data-toggle="block-option"
+										data-action="refresh_toggle" data-action-mode="demo">
+										<img src="images/ajax-loader.gif"/>
+									</button>
+								</li>
+							</ul>
+							<h3 class="block-title">Serveur : Linux
+								localhost.localdomain 3.10.0-327.el7.x86_64</h3>
+						</div>
+						<div
+							class="block-content block-content-full bg-gray-lighter text-center">
+							<div>
+
+								<div id="container"
+									style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="col-lg-4">
+					<div class="block">
+						<div class="block-header">
+							<ul class="block-options">
+								<li>
+									<button type="button" data-toggle="block-option"
+										data-action="refresh_toggle" data-action-mode="demo">
+										<i class="fa fa-refresh"></i>
+									</button>
+								</li>
+							</ul>
+							<h3 class="block-title">Server Information</h3>
+						</div>
+						<div
+							class="block-content block-content-full bg-gray-lighter text-left">
+							<div>
+								<i class="fa fa-desktop"></i> Intel® Xeon® E5-4600 v2 product
+								family <br></br> <i class="fa fa-archive"></i> RAM 128Go DDR3
+								LRDIMM <br></br> <i class="fa fa-hdd-o"></i> Storage 5TB SSD
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="block">
+						<div class="block-header">
+							<ul class="block-options">
+								<li>
+									<button type="button" data-toggle="block-option"
+										data-action="refresh_toggle" data-action-mode="demo">
+										<i class="fa fa-refresh"></i>
+									</button>
+								</li>
+							</ul>
+							<h3 class="block-title">Memory Usage</h3>
+						</div>
+						<div
+							class="block-content block-content-full bg-gray-lighter text-center">
+							<div>
+								<canvas id="chartmem"></canvas>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			<!-- <div class="col-lg-12">
+					<div class="block">
+						<div class="block-header">
+							<ul class="block-options">
+								<li>
+									<button type="button" data-toggle="block-option"
+										data-action="refresh_toggle" data-action-mode="demo">
+										<i class="fa fa-refresh"></i>
+									</button>
+								</li>
+							</ul>
+							<h3 class="block-title">Alertes</h3>
+						</div>
+						<div
+							class="block-content block-content-full bg-gray-lighter text-center">
+							<div>
+								<h:form>
+
+									<p:dataTable var="server" value="#{serverBean.model}"
+										id="sites">
+										<p:column headerText="HASH_CODE">
+											<h:outputText value="#{server.equipement.equipementId}" />
+										</p:column>
+										<p:column headerText="SERVER_NAME">
+											<h:outputText value="#{server.equipement.equipementNom}" />
+										</p:column>
+										<p:column headerText="USAGE CPU(%)">
+											<h:outputText value="#{server.etatCpu}" />
+										</p:column>
+
+										<p:column headerText="Date">
+											<h:outputText value="#{server.id.scuDate}" />
+										</p:column>
+
+										<p:column>
+											<f:facet name="header">
+
+												<span style="width: 100%; height: 100%;"> ACTION </span>
+
+											</f:facet>
+
+
+											<h:commandLink id="btnmod" action="AuditUser.xhtml"
+												value=""> <i class="fa fa-external-link-square"></i>
+											</h:commandLink>
+
+
+										</p:column>
+
+									</p:dataTable>
+
+
+
+
+								</h:form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+  -->
+			</div>
+
+		</div>
+		</main>
+
+		<ui:include src="/TPL/footer.xhtml" />
+
+	</div>
+
+
+
+	<script src="js/jquery-latest.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+	<script type="text/javascript" src="js/TKCHART.js?v=0.0.2">
+</script>
+<script type="text/javascript" src="js/pace.min.js">
+	</script>
+
+</h:body>
+</html>

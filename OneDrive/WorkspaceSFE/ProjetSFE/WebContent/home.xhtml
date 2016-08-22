@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="refresh" content="10" />
+<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Gestion d'infrogerance</title>
+	<meta name="description" content="Gestion d'infrogerance" />
+	<meta name="keywords" content="Gestion d'infrogerance" />
+	<meta name="author" content="Takkak EL Mehdi" />
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="css/organicfoodicons.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/demo.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/component.css?v=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/tk.css?v=1.0" />
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+	<script src="js/modernizr-custom.js"></script>
+	<script src="js/jquery-latest.min.js"></script>
+
+
+
+
+<script>
+
+$( "#settings, #admin_settings" ).on( "click", function()
+		{
+	//alert("dfsf");
+				$( "#menu" ).fadeToggle( "fast" );
+		});
+
+</script>
+	</h:head>
+	<h:body>
+
+	<div class="container">
+		<!-- Blueprint header -->
+		<header class="bp-header cf">
+			<div class="dummy-logo">
+				<div class="dummy-icon foodicon foodicon--coconut"></div>
+				<h2 class="dummy-heading">Fooganic</h2>
+			</div>
+			<div class="content_main">
+				<div class="bp-header__main_sub">
+				<!-- 
+					<div class="contenthe">
+						<div id="admin"><b id="admin_settings">Admin Settings</b></div>
+						<span id="settings" class="fa fa-cog"></span>
+						<div id="menu">
+							<div id="arrow"></div>
+								<a href="#">Edit Users <span id="icon" class="octicon octicon-person"></span></a>
+								<a href="#">Web Statistics <span id="icon" class="octicon octicon-graph"></span></a>
+								<a href="#">Upload Settings <span id="icon" class="octicon octicon-cloud-upload"></span></a>
+								<a href="#">Edit Slider <span id="icon" class="octicon octicon-pencil"></span></a>
+							</div>
+						</div>
+		
+				
+				 -->
+				
+				
+				<div class="content_name"  style="display: flex;">
+				<div class="circle_img"></div><span style="margin-top: 2px;">EL Mehdi Takkak  </span><span id="settings" class="fa fa-cog" style="color:#31bc86;margin-right: 40px;margin-top: 11px;"></span>
+				
+				</div>
+				
+				</div>
+				
+			</div>
+		</header>
+		<button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu"></span></button>
+		<nav id="ml-menu" class="menu">
+			<button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
+			<div class="menu__wrap">
+				<ul data-menu="main" class="menu__level">
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#"> <i class="fa fa-book" aria-hidden="true"></i> Prestation</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Exploitation</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Administration</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Hebergement</a></li>
+				</ul>
+				<!-- Submenu 1 -->
+				<ul data-menu="submenu-1" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Contrats d’infogérance</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Equipes de projets</a></li>
+				</ul>
+				<!-- Submenu 2 -->
+				<ul data-menu="submenu-2" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Supervision et Maintenance</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Alerts</a></li>
+				</ul>
+				
+				<!-- Submenu 3 -->
+				<ul data-menu="submenu-3" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Serveurs</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Machines</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Applications</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">SGBD</a></li>
+				</ul>
+				
+				<!-- Submenu 4 -->
+				<ul data-menu="submenu-4" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Espace de stockage</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Adressage IP</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Port</a></li>
+				</ul>
+				
+			</div>
+		</nav>
+		
+		<div class="content">
+		
+		
+
+		<div class="content_bm_tk" >
+		
+		<ui:include src="chart.xhtml" />
+		</div>
+			
+			
+		</div>
+	</div>
+
+	<!-- /view -->
+	<script src="js/classie.js"></script>
+	<script src="js/dummydata.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/tk.js"></script>
+
+
+	
+	</h:body>
+	
+	
+</html>

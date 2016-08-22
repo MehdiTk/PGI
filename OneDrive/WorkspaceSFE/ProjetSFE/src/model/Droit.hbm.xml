@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 juil. 2016 00:52:55 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Droit" table="DROIT">
+        <id name="droitId" type="big_decimal">
+            <column name="DROIT_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="droitDesc" type="string">
+            <column name="DROIT_DESC" length="254" />
+        </property>
+        <property name="droitBool" type="big_decimal">
+            <column name="DROIT_BOOL" precision="22" scale="0" />
+        </property>
+        <set name="employees" table="EMP_DROIT" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="DROIT_ID" precision="22" scale="0" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.Employee">
+                <column name="EMP_ID" length="254" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

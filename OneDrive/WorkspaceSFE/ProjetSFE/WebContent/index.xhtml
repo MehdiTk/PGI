@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+<link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css' />
+	<h:outputScript library="js" name="jquery-latest.min.js"></h:outputScript>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<style>
+		
+		*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  background: #252329;
+  font-family: 'Lato', sans-serif;
+}
+#div1tt {
+	text-align: center;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	color : #fff;
+}
+.l-chart {
+  padding: 20px;
+  background: #252329;
+}
+
+.aspect-ratio {
+  height: 0;
+  padding-bottom: 50%;
+  /* 495h / 990w : The Intended dimensions */
+}
+
+</style>
+    <script> 
+        $(document).ready(function() { 
+         	
+
+        	Chart.defaults.global.animationEasing        = 'easeInOutQuad',
+        		//Chart.defaults.global.animation               = false;
+                 Chart.defaults.global.responsive             = true;
+                 Chart.defaults.global.scaleOverride          = true;
+                 Chart.defaults.global.scaleShowLabels        = false;
+                 Chart.defaults.global.scaleSteps             = 10;
+                 Chart.defaults.global.scaleStepWidth         = 10;
+                 Chart.defaults.global.scaleStartValue        = 0;
+                 Chart.defaults.global.tooltipFontFamily      = 'Open Sans';
+                 Chart.defaults.global.tooltipFillColor       = '#FFFFFF';
+                 Chart.defaults.global.tooltipFontColor       = '#6E6E6E';
+                 Chart.defaults.global.tooltipCaretSize       = 0;
+                 Chart.defaults.global.maintainAspectRatio    = true;
+
+                 Chart.defaults.Line.scaleShowHorizontalLines = false;
+                 Chart.defaults.Line.scaleShowHorizontalLines = false;
+                 Chart.defaults.Line.scaleGridLineColor       = '#55505C';
+                 Chart.defaults.Line.scaleLineColor           = '#55505C';
+
+                 var chart    = document.getElementById('chart').getContext('2d'),
+                     gradient = chart.createLinearGradient(0, 0, 0, 450);
+                 var cpu_data = "#{serverBean.cpu_data}";
+                 var cpu_date = "#{serverBean.cpu_date}";
+                 var data=[],labels=[];
+
+                 cpu_data.split(",").forEach(function (usage) {
+                	 data.push(parseInt(usage));
+                	});
+                 cpu_date.split("#").forEach(function (usage) {
+                	 labels.push(parseInt(usage));
+                	});
+                 
+             	var dData = function() {
+          		  return $('#formid span').text();
+          		};
+                 
+               
+                 var data  = {
+                		 labels: ["dD 1", "dD 2", "dD 3", "dD 4", "dD 5", "dD 6", "dD 7", "dD 8", "dD 9", "dD 10"],
+
+                     datasets: [
+                         {
+                           label: 'Custom Label Name',
+                           fillColor: gradient,
+                           strokeColor: '#FC2525',
+                           pointColor: 'white',
+                           pointStrokeColor: 'rgba(220,220,220,1)',
+                           pointHighlightFill: '#fff',
+                           pointHighlightStroke: 'rgba(220,220,220,1)',
+                           data:  data
+                         }
+                     ]
+                 };
+
+                 gradient.addColorStop(0, 'rgba(255, 0,0, 0.5)');
+                 gradient.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
+                 gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
+
+                 var chart = new Chart(chart).Line(data);
+
+         		setInterval(function() {
+             		//alert(dData());
+         			chart.removeData();
+         			chart.addData([dData()], "CPU");
+         		 
+         		},800);
+
+
+         
+        	
+       /*
+        	
+        		console.log('refresh');
+        		 var url = 'chart.xhtml';  
+
+        		
+        	        $('#div1tt').load(url, function() {
+        	        	
+        	        	
+        	        }); 
+        	       
+        	        */
+
+            
+	  
+        }); 
+
+
+
+        
+    </script>
+	</h:head>
+	<h:body>
+	
+	
+	
+<h:panelGroup id="div1tt" layout="block" >  
+       
+
+
+        <h2>Server : Linux localhost.localdomain 3.10.0-327.el7.x86_64</h2>
+      <h:form id="formid">
+    <h:outputText id="txt_count" value="#{serverBean.datalastone()}"  style="display:none"/>
+    <p:poll interval="1" update="txt_count" />
+</h:form>
+        
+       
+           <div class="l-chart">
+  <div class="aspect-ratio">
+    <canvas id="chart"></canvas>
+  </div>
+</div>
+          
+ 
+ 
+ 
+ 
+ </h:panelGroup>
+
+	
+	</h:body>
+	
+	
+</html>

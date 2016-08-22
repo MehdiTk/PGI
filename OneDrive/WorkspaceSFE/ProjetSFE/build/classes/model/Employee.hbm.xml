@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 juil. 2016 00:52:55 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Employee" table="EMPLOYEE">
+        <id name="empId" type="string">
+            <column name="EMP_ID" length="254" />
+            <generator class="assigned" />
+        </id>
+        <property name="empCin" type="string">
+            <column name="EMP_CIN" length="254" />
+        </property>
+        <property name="empNom" type="string">
+            <column name="EMP_NOM" length="254" />
+        </property>
+        <property name="empPrenom" type="string">
+            <column name="EMP_PRENOM" length="254" />
+        </property>
+        <property name="empDatenaiss" type="date">
+            <column name="EMP_DATENAISS" length="7" />
+        </property>
+        <property name="empUsername" type="string">
+            <column name="EMP_USERNAME" length="254" />
+        </property>
+        <property name="empPassword" type="string">
+            <column name="EMP_PASSWORD" length="254" />
+        </property>
+        <set name="equipes" table="EQUIPE_EMP" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EMP_ID" length="254" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.Equipe">
+                <column name="EQUIPE_ID" length="254" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="droits" table="EMP_DROIT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EMP_ID" length="254" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.Droit">
+                <column name="DROIT_ID" precision="22" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

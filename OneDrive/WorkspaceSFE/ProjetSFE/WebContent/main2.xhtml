@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head>
+
+
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet"
+		href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700" />
+	<link rel="stylesheet" href="assets/js/plugins/slick/slick.min.css" />
+	<link rel="stylesheet"
+		href="assets/js/plugins/slick/slick-theme.min.css" />
+	<link rel="stylesheet" href="assets/css/bootstrap.min-1.4.css" />
+	<link rel="stylesheet" id="css-main"
+		href="assets/css/oneui.min-2.1.css" />
+	<link href='https://fonts.googleapis.com/css?family=Lato:300'
+		rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+	
+</h:head>
+
+<h:body>
+
+
+	<div id="page-container"
+		class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+
+		<ui:include src="/TPL/nav.xhtml" />
+
+		<ui:include src="/TPL/header.xhtml" />
+
+		<main id="main-container" style="min-height: 868px;">
+		<div class="content bg-white border-b">
+			<div class="row items-push text-uppercase">
+				<div class="col-xs-6 col-sm-3">
+					<div class="font-w700 text-gray-darker animated fadeIn">Usage Max CPU
+						Sales</div>
+					<div class="text-muted animated fadeIn">
+						<small><i class="si si-calendar"></i> Today</small>
+					</div>
+					<a class="h2 font-w300 text-primary animated flipInX"
+						href="base_comp_charts.php">300</a>
+				</div>
+				<div class="col-xs-6 col-sm-3">
+					<div class="font-w700 text-gray-darker animated fadeIn">Product
+						Sales</div>
+					<div class="text-muted animated fadeIn">
+						<small><i class="si si-calendar"></i> This Month</small>
+					</div>
+					<a class="h2 font-w300 text-primary animated flipInX"
+						href="base_comp_charts.php">8,790</a>
+				</div>
+				<div class="col-xs-6 col-sm-3">
+					<div class="font-w700 text-gray-darker animated fadeIn">Total
+						Earnings</div>
+					<div class="text-muted animated fadeIn">
+						<small><i class="si si-calendar"></i> All Time</small>
+					</div>
+					<a class="h2 font-w300 text-primary animated flipInX"
+						href="base_comp_charts.php">$ 93,880</a>
+				</div>
+				<div class="col-xs-6 col-sm-3">
+					<div class="font-w700 text-gray-darker animated fadeIn">Average
+						Sale</div>
+					<div class="text-muted animated fadeIn">
+						<small><i class="si si-calendar"></i> All Time</small>
+					</div>
+					<a class="h2 font-w300 text-primary animated flipInX"
+						href="base_comp_charts.php">$ 270</a>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="block">
+						<div class="block-header">
+							<ul class="block-options">
+								<li>
+									<button type="button" data-toggle="block-option"
+										data-action="refresh_toggle" data-action-mode="demo">
+										<i class="si si-refresh"></i>
+									</button>
+								</li>
+							</ul>
+							<h3 class="block-title">Serveur : Linux
+								localhost.localdomain 3.10.0-327.el7.x86_64</h3>
+						</div>
+						<div
+							class="block-content block-content-full bg-gray-lighter text-center">
+							<div>
+								<h:form id="formid">
+									<h:outputText id="txt_count"
+										value="#{serverBean.datalastone()}" style="display:none" />
+									<p:poll interval="1" update="txt_count" />
+								</h:form>
+								<canvas id="chart" width="700" height="400"></canvas>
+							</div>
+						</div>
+
+					</div>
+					
+				</div>
+				<div class="col-lg-4"  style="height:444px">
+					<div class="block">
+						<div class="block-header">
+							<ul class="block-options">
+								<li>
+									<button type="button" data-toggle="block-option"
+										data-action="refresh_toggle" data-action-mode="demo">
+										<i class="si si-refresh"></i>
+									</button>
+								</li>
+							</ul>
+							<h3 class="block-title">Memoru Usage</h3>
+						</div>
+						<div
+							class="block-content block-content-full bg-gray-lighter text-center">
+							<div>
+								<canvas id="chartmem"></canvas>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+		</main>
+
+		<ui:include src="/TPL/footer.xhtml" />
+
+	</div>
+
+
+	<script src="js/jquery-latest.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+	<script> 
+        $(document).ready(function() { 
+
+        	
+               var dData = function() {
+           		  return $('#formid span').text();
+           		};
+                  
+
+           		var buyerData = {
+           				labels : ["CPU","CPU","CPU","CPU","CPU","CPU","CPU","CPU","CPU","CPU","CPU","CPU","CPU","CPU","CPU"],
+           				datasets : [
+           					{
+           						fillColor : "rgba(92,144,210,0.4)",
+           						strokeColor : "#5c90d2",
+           						pointColor : "#fff",
+           						pointStrokeColor : "#5c90d2",
+           						data : [20,46,60,21,30,47,10,12,35,75,52,25,42,50,35]
+           					}
+           				]
+           			}
+
+
+
+       			//	fillColor : "rgba(92,144,210,0.4)",
+           						//strokeColor : "#5c90d2",
+           						//pointColor : "#fff",
+           						//pointStrokeColor : "#5c90d2",
+           						
+           						
+           		var chart = document.getElementById('chart').getContext('2d');
+           	    var  cc = new Chart(chart).Line(buyerData);
+
+
+
+
+           	 Chart.types.Doughnut.extend({
+                 name: "DoughnutTextInside",
+                 showTooltip: function() {
+                     this.chart.ctx.save();
+                     Chart.types.Doughnut.prototype.showTooltip.apply(this, arguments);
+                     this.chart.ctx.restore();
+                 },
+                 draw: function() {
+                     Chart.types.Doughnut.prototype.draw.apply(this, arguments);
+
+                     var width = this.chart.width,
+                         height = this.chart.height;
+
+                     var fontSize = (height / 114).toFixed(2);
+                     this.chart.ctx.font = fontSize + "em Verdana";
+                     this.chart.ctx.textBaseline = "middle";
+
+                     var text = dData() + "%",
+                         textX = Math.round((width - this.chart.ctx.measureText(text).width) / 2),
+                         textY = height / 2;
+
+                     this.chart.ctx.fillText(text, textX, textY);
+                 }
+             });
+
+             var data = [{
+                 value: dData(),
+                 color: "#F7464A"
+             }, {
+                 value: 100-parseInt(dData(), 10),
+                 color: "#4D5360"
+             }];
+
+             var DoughnutTextInsideChart = new Chart($('#chartmem')[0].getContext('2d')).DoughnutTextInside(data, {
+                 responsive: true
+             });
+
+
+
+             
+
+
+             
+
+
+
+
+
+
+
+           	    
+
+         		setInterval(function() {
+
+             		//alert(dData());
+             		
+             		
+         			cc.removeData();
+         			cc.addData([dData()], "CPU");
+         		 
+         		},1000);
+         		
+
+
+         
+        	
+
+         		
+            
+	  
+        }); 
+
+
+
+        
+    </script>
+</h:body>
+</html>

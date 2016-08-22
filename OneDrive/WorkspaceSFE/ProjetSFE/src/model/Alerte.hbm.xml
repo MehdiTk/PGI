@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 juil. 2016 00:52:55 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Alerte" table="ALERTE">
+        <id name="alertId" type="string">
+            <column name="ALERT_ID" length="254" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="equipement" class="model.Equipement" fetch="select">
+            <column name="EQUIPEMENT_ID" length="254" not-null="true" />
+        </many-to-one>
+        <property name="alertDes" type="string">
+            <column name="ALERT_DES" length="254" />
+        </property>
+        <property name="alertDate" type="date">
+            <column name="ALERT_DATE" length="7" />
+        </property>
+    </class>
+</hibernate-mapping>

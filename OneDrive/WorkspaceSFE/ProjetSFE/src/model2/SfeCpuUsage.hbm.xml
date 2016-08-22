@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2 juin 2016 23:42:03 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="model.SfeCpuUsage" table="SFE_CPU_USAGE" schema="AGENTSFE" optimistic-lock="version">
+        <composite-id name="id" class="model.SfeCpuUsageId">
+            <key-property name="scuServerId" type="string">
+                <column name="SCU_SERVER_ID" length="55" />
+            </key-property>
+            <key-property name="scuPerc" type="java.lang.Short">
+                <column name="SCU_PERC" precision="3" scale="0" />
+            </key-property>
+            <key-property name="scuDate" type="string">
+                <column name="SCU_DATE" length="35" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

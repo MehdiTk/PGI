@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 juil. 2016 00:52:55 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Etatserveur" table="ETATSERVEUR">
+        <id name="etatId" type="string">
+            <column name="ETAT_ID" length="254" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="equipement" class="model.Equipement" fetch="select">
+            <column name="EQUIPEMENT_ID" length="254" not-null="true" />
+        </many-to-one>
+        <property name="etatCpu" type="big_decimal">
+            <column name="ETAT_CPU" precision="22" scale="0" />
+        </property>
+        <property name="etatMem" type="big_decimal">
+            <column name="ETAT_MEM" precision="22" scale="0" />
+        </property>
+        <property name="etatIf1In" type="big_decimal">
+            <column name="ETAT_IF_1_IN" precision="22" scale="0" />
+        </property>
+        <property name="etatIf2In" type="big_decimal">
+            <column name="ETAT_IF_2_IN" precision="22" scale="0" />
+        </property>
+        <property name="etatIf3In" type="big_decimal">
+            <column name="ETAT_IF_3_IN" precision="22" scale="0" />
+        </property>
+        <property name="etatIf4In" type="big_decimal">
+            <column name="ETAT_IF_4_IN" precision="22" scale="0" />
+        </property>
+        <property name="etatIf1Out" type="big_decimal">
+            <column name="ETAT_IF_1_OUT" precision="22" scale="0" />
+        </property>
+        <property name="etatIf2Out" type="big_decimal">
+            <column name="ETAT_IF_2_OUT" precision="22" scale="0" />
+        </property>
+        <property name="etatIf3Out" type="big_decimal">
+            <column name="ETAT_IF_3_OUT" precision="22" scale="0" />
+        </property>
+        <property name="etatIf4Out" type="big_decimal">
+            <column name="ETAT_IF_4_OUT" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

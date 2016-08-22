@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 juil. 2016 00:52:55 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="model.Contrat" table="CONTRAT">
+        <id name="contratId" type="string">
+            <column name="CONTRAT_ID" length="254" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="equipe" class="model.Equipe" fetch="select">
+            <column name="EQUIPE_ID" length="254" not-null="true" />
+        </many-to-one>
+        <many-to-one name="entreprise" class="model.Entreprise" fetch="select">
+            <column name="ENTREPRISE_ID" length="254" not-null="true" />
+        </many-to-one>
+        <property name="contratPath" type="string">
+            <column name="CONTRAT_PATH" length="254" />
+        </property>
+        <property name="contratDatecrea" type="date">
+            <column name="CONTRAT_DATECREA" length="7" />
+        </property>
+        <property name="contratEmpcrea" type="string">
+            <column name="CONTRAT_EMPCREA" length="254" />
+        </property>
+        
+        <property name="contratMontant" type="big_decimal">
+            <column name="CONTRAT_MONTANT"  precision="22" scale="0" />
+        </property>
+        <property name="contratPenalite" type="big_decimal">
+            <column name="CONTRAT_PENALITE"  precision="22" scale="0" />
+        </property>
+        <property name="contratddebut" type="date">
+            <column name="CONTRAT_DDEBUT"  length="7"  />
+        </property>
+        <property name="contratloides" type="string">
+            <column name="CONTRAT_LOIDES" length="254" />
+        </property>
+        <property name="contratduree" type="int">
+            <column name="CONTRAT_DUREE" length="254" />
+        </property>
+
+	
+    </class>
+</hibernate-mapping>
